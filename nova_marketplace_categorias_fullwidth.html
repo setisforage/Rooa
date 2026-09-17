@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="NOVA — marketplace uruguayo multimarca. Descubrí moda, accesorios y productos de marcas locales.">
+<title>ALMA — Moda femenina multimarca</title>
+<style>
+:root{
+  --bg:#f7f7f4;--surface:#fff;--ink:#171817;--muted:#777a75;--line:#e7e7e1;
+  --accent:#b9d9c5;--accent2:#dfeee5;--radius:20px;--shadow:0 18px 50px rgba(20,25,20,.08);
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input,select{font:inherit} button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+.header{position:sticky;top:0;z-index:30;background:rgba(247,247,244,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(231,231,225,.8)}
+.nav{max-width:1240px;margin:auto;height:74px;padding:0 24px;display:flex;align-items:center;gap:28px}
+.logo{font-weight:900;letter-spacing:.16em;font-size:20px}
+.navlinks{display:flex;gap:24px;font-size:14px;color:#565954}
+.navlinks a:hover{color:#111}
+.navright{margin-left:auto;display:flex;align-items:center;gap:10px}
+.iconbtn{width:42px;height:42px;border:1px solid var(--line);background:#fff;border-radius:50%;display:grid;place-items:center}
+.cartbtn{position:relative}.badge{position:absolute;right:-1px;top:-2px;background:#111;color:white;border-radius:99px;font-size:10px;min-width:18px;height:18px;display:grid;place-items:center}
+.hero{max-width:1240px;margin:0 auto;padding:48px 24px 28px}
+.heroBox{min-height:480px;border-radius:30px;overflow:hidden;position:relative;background:
+linear-gradient(110deg,rgba(20,25,21,.73),rgba(20,25,21,.08)),
+url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1800&q=85') center/cover}
+.heroContent{position:absolute;left:clamp(26px,6vw,74px);bottom:60px;color:#fff;max-width:560px}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:800;opacity:.82}
+h1{font-size:clamp(44px,7vw,78px);line-height:.94;margin:15px 0 18px;letter-spacing:-.055em}
+.hero p{font-size:17px;line-height:1.55;max-width:460px;color:#f0f1ed;margin:0 0 26px}
+.btn{border:0;border-radius:999px;padding:14px 21px;font-weight:750;background:#fff;color:#171817}
+.btn.dark{background:#171817;color:#fff}.btn.soft{background:var(--accent2)}
+.section{max-width:1240px;margin:auto;padding:40px 24px}
+.sectionHead{display:flex;align-items:end;justify-content:space-between;margin-bottom:22px;gap:20px}
+.sectionHead h2{font-size:30px;letter-spacing:-.035em;margin:0}
+.sectionHead p{margin:5px 0 0;color:var(--muted);font-size:14px}
+.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.cat{height:150px;border-radius:18px;overflow:hidden;position:relative;background:#ddd}
+.cat img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.cat:hover img{transform:scale(1.04)}
+.cat:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent,rgba(0,0,0,.58))}
+.cat span{position:absolute;z-index:2;bottom:17px;left:18px;color:white;font-weight:750}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+.search{flex:1;min-width:220px;position:relative}
+.search input{width:100%;height:46px;border:1px solid var(--line);border-radius:999px;background:white;padding:0 18px;outline:none}
+select{height:46px;border:1px solid var(--line);border-radius:999px;background:white;padding:0 40px 0 15px}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.card{min-width:0}
+.pic{height:370px;border-radius:18px;overflow:hidden;background:#eee;position:relative}
+.pic img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s}
+.card:hover .pic img{transform:scale(1.035)}
+.fav{position:absolute;right:12px;top:12px;width:38px;height:38px;border:0;border-radius:50%;background:rgba(255,255,255,.9);font-size:18px}
+.discount{position:absolute;left:12px;top:12px;background:#171817;color:white;border-radius:999px;padding:6px 9px;font-size:11px;font-weight:800}
+.cardInfo{padding:12px 3px}
+.brand{font-size:11px;color:#8a8c87;text-transform:uppercase;letter-spacing:.12em;font-weight:750}
+.name{font-size:15px;margin:5px 0 7px;font-weight:650}
+.price{font-weight:800}.old{text-decoration:line-through;color:#999;font-weight:500;margin-right:6px;font-size:13px}
+.swatches{display:flex;gap:5px;margin-top:9px}.swatch{width:13px;height:13px;border-radius:50%;border:1px solid #bbb}
+.promo{background:var(--accent2);border-radius:24px;padding:34px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.promo h2{font-size:30px;margin:0 0 7px;letter-spacing:-.035em}.promo p{color:#525651;margin:0;line-height:1.5}
+.features{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.feature{padding:27px 22px}.feature+.feature{border-left:1px solid var(--line)}
+.feature b{display:block;margin-bottom:7px}.feature span{font-size:13px;color:var(--muted);line-height:1.5}
+.footer{max-width:1240px;margin:auto;padding:50px 24px 35px;display:flex;justify-content:space-between;gap:30px;color:#6f726d;font-size:13px}
+.footer strong{color:#171817;letter-spacing:.13em}.footerlinks{display:flex;gap:20px;flex-wrap:wrap}
+.drawerBackdrop{position:fixed;inset:0;background:rgba(0,0,0,.32);z-index:50;opacity:0;pointer-events:none;transition:.25s}
+.drawer{position:fixed;z-index:51;right:0;top:0;height:100%;width:min(430px,100%);background:white;transform:translateX(100%);transition:.3s;display:flex;flex-direction:column}
+.open .drawerBackdrop{opacity:1;pointer-events:auto}.open .drawer{transform:translateX(0)}
+.drawerHead{padding:22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.drawerBody{padding:20px;overflow:auto;flex:1}.empty{text-align:center;color:var(--muted);padding:60px 20px}
+.cartitem{display:flex;gap:13px;margin-bottom:18px}.cartitem img{width:75px;height:90px;object-fit:cover;border-radius:12px}.cartitem h4{margin:2px 0 5px;font-size:14px}.cartitem p{margin:0;color:var(--muted);font-size:12px}.qty{margin-top:10px;display:flex;gap:8px;align-items:center}.qty button{border:1px solid var(--line);background:white;width:27px;height:27px;border-radius:50%}
+.drawerFoot{border-top:1px solid var(--line);padding:20px}.total{display:flex;justify-content:space-between;font-weight:800;margin-bottom:14px}
+.close{border:0;background:#f1f1ed;border-radius:50%;width:38px;height:38px;float:right}
+.detail{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:10px}.detail img{width:100%;height:540px;object-fit:cover;border-radius:18px}.detail h2{font-size:38px;letter-spacing:-.04em;margin:8px 0}.detail .bigprice{font-size:22px;font-weight:800;margin:18px 0}.options{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.option{padding:10px 14px;border:1px solid var(--line);background:#fff;border-radius:999px}.option.selected{background:#171817;color:white;border-color:#171817}
+.toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);background:#171817;color:#fff;padding:13px 18px;border-radius:999px;z-index:100;opacity:0;pointer-events:none;transition:.25s;font-size:13px}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:900px){.navlinks{display:none}.products{grid-template-columns:repeat(2,1fr)}.categories{grid-template-columns:repeat(2,1fr)}.pic{height:330px}.detail{grid-template-columns:1fr}.detail img{height:420px}.features{grid-template-columns:1fr}.feature+.feature{border-left:0;border-top:1px solid var(--line)}}
+@media(max-width:560px){.nav{padding:0 16px}.hero,.section{padding-left:16px;padding-right:16px}.heroBox{min-height:510px;border-radius:22px}.heroContent{left:25px;right:20px;bottom:34px}.hero p{font-size:15px}.categories{gap:9px}.cat{height:125px}.products{gap:15px}.pic{height:245px;border-radius:14px}.promo{padding:25px;display:block}.promo .btn{margin-top:20px}.footer{display:block}.footerlinks{margin-top:20px}.detail{padding:4px}.detail h2{font-size:30px}}
+</style>
+
+<style>
+.hero{max-width:none!important;padding:0!important;margin:0!important}
+.heroimg{width:100%!important;border-radius:0!important}
+.tile,.photo,.editorial img,.detail img,.cartitem img{border-radius:0!important}
+.actions{gap:2px}.action{display:grid;place-items:center;color:#171614}
+.action svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.bag{position:relative}.bag .count{font-family:Arial,Helvetica,sans-serif}
+
+/* FORCE SQUARE IMAGE CORNERS */
+.heroBox,.cat,.pic,.productVisual,.productVisual img,.detail img,.cartitem img,.miniCard .pic,.miniCard .pic img,.cat img,.pic img,.editorial img{border-radius:0!important;}
+@media(max-width:560px){.heroBox,.pic,.cat{border-radius:0!important;}}
+</style>
+
+<style id="category-strip-adjustment">
+/* Categorías: cuatro imágenes pegadas, sin separación y a todo el ancho */
+#categorias .categories{
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0,1fr));
+  gap:0 !important;
+}
+#categorias .cat{
+  width:100%;
+  height:270px !important;
+  min-width:0;
+  border-radius:0 !important;
+  margin:0;
+}
+#categorias .cat img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  border-radius:0 !important;
+}
+@media(max-width:900px){
+  #categorias .categories{grid-template-columns:repeat(4,minmax(0,1fr));}
+  #categorias .cat{height:230px !important;}
+}
+@media(max-width:560px){
+  #categorias .categories{grid-template-columns:repeat(4,minmax(0,1fr));}
+  #categorias .cat{height:210px !important;}
+  #categorias .cat span{left:12px;bottom:14px;font-size:12px;}
+}
+</style>
+
+</head>
+<body>
+
+<header class="header">
+<nav class="nav">
+  <a class="logo" href="#">ALMA</a>
+  <div class="navlinks">
+    <a href="#novedades">NOVEDADES</a><a href="#categorias">CATEGORÍAS</a><a href="#novedades">FIESTA</a><a href="#novedades">SALE</a><a href="#marcas">MARCAS</a>
+  </div>
+  <div class="navright">
+    <button class="iconbtn" aria-label="Buscar" onclick="document.getElementById('search').focus()">⌕</button>
+    <button class="iconbtn cartbtn" aria-label="Carrito" onclick="toggleCart()">♧<span class="badge" id="count">0</span></button>
+  </div>
+</nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="heroBox">
+    <div class="heroContent">
+      <div class="eyebrow">MODA FEMENINA · URUGUAY</div>
+      <h1>Vestite para que te recuerden.</h1>
+      <p>Botas, carteras, vestidos, chaquetas y piezas especiales de marcas que vale la pena conocer.</p>
+      <a class="btn" href="#novedades">COMPRAR AHORA</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="categorias">
+  <div class="sectionHead"><div><h2>Elegí tu próxima obsesión</h2><p>Las categorías que más buscás, reunidas en un solo lugar.</p></div></div>
+  <div class="categories">
+    <a class="cat" href="#novedades" onclick="filterCat('Vestidos')"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=80"><span>Vestidos</span></a>
+    <a class="cat" href="#novedades" onclick="filterCat('Calzado')"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80"><span>Botas & calzado</span></a>
+    <a class="cat" href="#novedades" onclick="filterCat('Carteras')"><img src="https://images.unsplash.com/photo-1523779917675-b6ed3a42a561?auto=format&fit=crop&w=900&q=80"><span>Carteras</span></a>
+    <a class="cat" href="#novedades" onclick="filterCat('Chaquetas')"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=80"><span>Chaquetas</span></a>
+  </div>
+</section>
+
+<section class="section" id="novedades">
+  <div class="sectionHead">
+    <div><h2>Novedades</h2><p id="resultText">Seleccioná, compará y descubrí.</p></div>
+  </div>
+  <div class="toolbar">
+    <div class="search"><input id="search" type="search" placeholder="Buscar producto o marca…" oninput="renderProducts()"></div>
+    <select id="catFilter" onchange="renderProducts()"><option value="">Todas las categorías</option><option>Vestidos</option><option>Calzado</option><option>Carteras</option><option>Chaquetas</option><option>Fiesta</option></select>
+    <select id="sort" onchange="renderProducts()"><option value="featured">Destacados</option><option value="low">Precio: menor</option><option value="high">Precio: mayor</option></select>
+  </div>
+  <div class="products" id="products"></div>
+</section>
+
+<section class="section" id="marcas">
+  <div class="promo">
+    <div><h2>Tu marca también puede estar acá.</h2><p>Vendé tus productos a una audiencia nueva, sin perder el control de tu stock ni de tus envíos.</p></div>
+    <button class="btn dark" onclick="showToast('Formulario de marcas: próximamente')">Quiero vender</button>
+  </div>
+</section>
+
+<section class="section" id="nosotros">
+  <div class="features">
+    <div class="feature"><b>Marcas reales</b><span>Comprás directamente a la marca que vende el producto.</span></div>
+    <div class="feature"><b>Compra simple</b><span>Descubrí nuevas marcas desde una experiencia clara y minimalista.</span></div>
+    <div class="feature"><b>Envíos transparentes</b><span>Cada marca gestiona su despacho y sus condiciones de entrega.</span></div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div><strong>NOVA</strong><div style="margin-top:10px">Marketplace de moda femenina · Uruguay</div></div>
+  <div class="footerlinks"><a href="#">Términos</a><a href="#">Privacidad</a><a href="#">Ayuda</a><a href="#">Instagram</a></div>
+</footer>
+
+<div id="cartLayer">
+  <div class="drawerBackdrop" onclick="toggleCart()"></div>
+  <aside class="drawer" aria-label="Carrito">
+    <div class="drawerHead"><b>Tu carrito</b><button class="iconbtn" onclick="toggleCart()">×</button></div>
+    <div class="drawerBody" id="cartBody"></div>
+    <div class="drawerFoot"><div class="total"><span>Total productos</span><span id="total">$0</span></div><button class="btn dark" style="width:100%" onclick="checkout()">Continuar</button></div>
+  </aside>
+</div>
+
+<div id="productPage" class="productPage" style="display:none"></div>
+<div class="toast" id="toast"></div>
+
+<style>
+.productPage{max-width:1180px;margin:0 auto;padding:28px 24px 80px}.backline{display:flex;align-items:center;gap:8px;font-size:13px;color:#777;margin-bottom:24px;cursor:pointer}.productHero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr);gap:56px;align-items:start}.productVisual{background:#f3f1ed;min-height:620px;overflow:hidden}.productVisual img{width:100%;height:620px;object-fit:cover}.productInfo{padding:8px 0}.productInfo h1{font-size:38px;line-height:1.05;margin:8px 0 18px;letter-spacing:-.03em}.bigprice{font-size:25px;font-weight:700;margin:12px 0 24px}.productDesc{color:#666;line-height:1.65;margin-bottom:24px}.label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-top:22px;margin-bottom:10px}.options{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}.option{border:1px solid #ddd;background:#fff;padding:10px 14px;border-radius:8px;cursor:pointer}.option.selected{border-color:#111;box-shadow:inset 0 0 0 1px #111}.brandLink{cursor:pointer;text-decoration:underline;text-underline-offset:3px}.shipbox{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin-top:24px;font-size:13px;line-height:1.55}.sameBrandBanner{margin:54px 0 34px;padding:24px;background:#f3f0ea;display:flex;justify-content:space-between;align-items:center;gap:20px}.sameBrandBanner h3{margin:0 0 5px;font-size:18px}.sameBrandBanner p{margin:0;color:#666;font-size:13px}.relatedTitle{font-size:24px;margin:0 0 18px}.relatedGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.miniCard{cursor:pointer}.miniCard .pic{height:330px}.miniCard .pic img{width:100%;height:100%;object-fit:cover}.miniCard .cardInfo{padding:10px 2px}.miniCard .name{margin-top:3px}.miniCard .price{margin-top:7px}.productPage .fav{display:none}@media(max-width:800px){.productHero{grid-template-columns:1fr;gap:28px}.productVisual,.productVisual img{min-height:440px;height:440px}.productInfo h1{font-size:30px}.relatedGrid{grid-template-columns:repeat(2,1fr)}.miniCard .pic{height:260px}.sameBrandBanner{display:block}.sameBrandBanner .btn{margin-top:16px;width:100%}.productPage{padding:20px 16px 60px}}
+</style>
+<script>
+const products=[
+{id:1,brand:"AURA",name:"Bota Sideral",cat:"Calzado",price:9342,old:10990,discount:15,img:"https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=900&q=85",colors:["#171614","#9a7659"],sizes:["36","37","38","39","40"]},
+{id:2,brand:"SORIAME",name:"Leather Bag Mariu",cat:"Carteras",price:3600,old:4800,discount:25,img:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=85",colors:["#7b332b","#171614"],sizes:[]},
+{id:3,brand:"MARGA",name:"Vestido Marea",cat:"Vestidos",price:4491,old:4990,discount:10,img:"https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=900&q=85",colors:["#e8e1d8","#171614"],sizes:["S","M","L"]},
+{id:4,brand:"LORIA",name:"Cartera Everyday",cat:"Carteras",price:7680,old:9600,discount:20,img:"https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=900&q=85",colors:["#8b6049","#252525"],sizes:[]},
+{id:5,brand:"NOA",name:"Chaqueta Clover",cat:"Chaquetas",price:7194,old:11990,discount:40,img:"https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=900&q=85",colors:["#e0ddd5","#171614"],sizes:["S","M","L","XL"]},
+{id:6,brand:"VANTA",name:"Vestido Frunce",cat:"Fiesta",price:2195,old:4390,discount:50,img:"https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=900&q=85",colors:["#171614","#9b2f39"],sizes:["S","M","L"]},
+{id:7,brand:"AURA",name:"Bota Viena",cat:"Calzado",price:5018,old:6690,discount:25,img:"https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&w=900&q=85",colors:["#4b3024","#171614"],sizes:["36","37","38","39"]},
+{id:8,brand:"MARGA",name:"Chaqueta Natura",cat:"Chaquetas",price:10880,old:13600,discount:20,img:"https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=900&q=85",colors:["#d6c7b7","#4b4b46"],sizes:["S","M","L"]},
+{id:9,brand:"LORIA",name:"Vestido Lili",cat:"Vestidos",price:6550,old:7990,discount:18,img:"https://images.unsplash.com/photo-1572804013427-4d7ca7268217?auto=format&fit=crop&w=900&q=85",colors:["#f0ece4","#7e2631"],sizes:["S","M","L"]},
+{id:10,brand:"SORIAME",name:"Cartera Celina",cat:"Carteras",price:3443,old:4200,discount:18,img:"https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&w=900&q=85",colors:["#6c4437","#171614"],sizes:[]},
+{id:11,brand:"NOA",name:"Botín Campa",cat:"Calzado",price:7731,old:8590,discount:10,img:"https://images.unsplash.com/photo-1603487742131-4160ec999306?auto=format&fit=crop&w=900&q=85",colors:["#171614","#8a6b54"],sizes:["36","37","38","39"]},
+{id:12,brand:"VANTA",name:"Vestido de noche",cat:"Fiesta",price:5890,old:null,discount:0,img:"https://images.unsplash.com/photo-1566479179817-c0f75d4c3f4d?auto=format&fit=crop&w=900&q=85",colors:["#171614"],sizes:["S","M","L"]}
+]
+let cart=JSON.parse(localStorage.getItem("novaCart")||"[]");
+
+function money(n){return "$"+n.toLocaleString("es-UY")}
+function renderProducts(){
+ const q=document.getElementById("search").value.toLowerCase(), cat=document.getElementById("catFilter").value, sort=document.getElementById("sort").value;
+ let arr=products.filter(p=>(!q||(p.name+" "+p.brand).toLowerCase().includes(q))&&(!cat||p.cat===cat));
+ if(sort==="low")arr.sort((a,b)=>a.price-b.price); if(sort==="high")arr.sort((a,b)=>b.price-a.price);
+ document.getElementById("resultText").textContent=arr.length+" productos para descubrir";
+ document.getElementById("products").innerHTML=arr.map(p=>`
+ <article class="card">
+  <div class="pic" onclick="openProduct(${p.id})" style="cursor:pointer">
+   ${p.discount?`<span class="discount">-${p.discount}%</span>`:""}
+   <button class="fav" onclick="event.stopPropagation();this.textContent=this.textContent==='♡'?'♥':'♡'">♡</button>
+   <img src="${p.img}" alt="${p.name}">
+  </div>
+  <div class="cardInfo">
+   <div class="brand">${p.brand}</div><div class="name">${p.name}</div>
+   <div class="price">${p.old?`<span class="old">${money(p.old)}</span>`:""}${money(p.price)}</div>
+   <div class="swatches">${p.colors.map(c=>`<span class="swatch" style="background:${c}"></span>`).join("")}</div>
+  </div>
+ </article>`).join("");
+}
+function filterCat(c){document.getElementById("catFilter").value=c;renderProducts()}
+function productCard(p){return `<article class="card miniCard" onclick="openProduct(${p.id})"><div class="pic">${p.discount?`<span class="discount">-${p.discount}%</span>`:""}<img src="${p.img}" alt="${p.name}"></div><div class="cardInfo"><div class="brand">${p.brand}</div><div class="name">${p.name}</div><div class="price">${p.old?`<span class="old">${money(p.old)}</span>`:""}${money(p.price)}</div></div></article>`}
+function openProduct(id,push=true){
+ const p=products.find(x=>x.id===id); if(!p)return;
+ if(push) history.pushState({product:id},'',location.pathname+'?producto='+id);
+ document.querySelector('main').style.display='none';
+ document.getElementById('productPage').style.display='block';
+ const same=products.filter(x=>x.brand===p.brand&&x.id!==p.id).slice(0,4);
+ const similar=products.filter(x=>x.id!==p.id&&x.brand!==p.brand&&x.cat===p.cat).slice(0,4);
+ const fallback=products.filter(x=>x.id!==p.id&&x.brand!==p.brand).slice(0,4);
+ const rec=similar.length>=4?similar:fallback;
+ document.getElementById('productPage').innerHTML=`
+ <div class="backline" onclick="goCatalog()">← Volver al catálogo</div>
+ <div class="productHero">
+  <div class="productVisual"><img src="${p.img}" alt="${p.name}"></div>
+  <div class="productInfo">
+   <div class="brand brandLink" onclick="filterBrand('${p.brand}')">${p.brand}</div>
+   <h1>${p.name}</h1>
+   <div class="bigprice">${p.old?`<span class="old">${money(p.old)}</span>`:""}${money(p.price)}</div>
+   <p class="productDesc">Una pieza seleccionada de ${p.brand}. El producto es vendido y enviado directamente por la marca, que gestiona su stock, despacho y condiciones de cambios.</p>
+   ${p.colors.length?`<div class="label">Color</div><div class="options">${p.colors.map((c,i)=>`<button class="option ${i===0?'selected':''}" onclick="selectOption(this)"><span class="swatch" style="display:inline-block;background:${c};vertical-align:-2px"></span></button>`).join('')}</div>`:''}
+   ${p.sizes.length?`<div class="label">Talle</div><div class="options">${p.sizes.map((s,i)=>`<button class="option ${i===0?'selected':''}" onclick="selectOption(this)">${s}</button>`).join('')}</div>`:''}
+   <button class="btn dark" style="width:100%;margin-top:22px" onclick="addToCart(${p.id})">Agregar al carrito</button>
+   <div class="shipbox"><b>Envío gestionado por ${p.brand}</b><br>Los costos y tiempos de envío dependen de la marca y del destino. Consultá sus condiciones antes de finalizar la compra.</div>
+  </div>
+ </div>
+ ${same.length?`<div class="sameBrandBanner"><div><h3>¿Te gusta ${p.brand}?</h3><p>Descubrí más productos de la misma marca y aprovechá mejor tu pedido si la marca ofrece envío combinado.</p></div><button class="btn" onclick="filterBrand('${p.brand}')">Ver toda la marca</button></div><section><h2 class="relatedTitle">Otros productos de ${p.brand}</h2><div class="relatedGrid">${same.map(productCard).join('')}</div></section>`:''}
+ ${rec.length?`<section style="margin-top:58px"><h2 class="relatedTitle">Otros productos que podrían gustarte</h2><div class="relatedGrid">${rec.map(productCard).join('')}</div></section>`:''}
+ `;
+ window.scrollTo(0,0);
+}
+function selectOption(el){el.parentNode.querySelectorAll('.option').forEach(x=>x.classList.remove('selected'));el.classList.add('selected')}
+function goCatalog(replace=false){
+ document.getElementById('productPage').style.display='none';document.querySelector('main').style.display='block';
+ if(replace)history.replaceState({},'',location.pathname);else history.pushState({},'',location.pathname);
+ window.scrollTo(0,0);renderProducts();
+}
+function filterBrand(brand){goCatalog();document.getElementById('search').value=brand;renderProducts();document.getElementById('products').scrollIntoView({behavior:'smooth'});}
+function handleRoute(){const id=new URLSearchParams(location.search).get('producto');if(id)openProduct(Number(id),false);else goCatalog(true)}
+window.addEventListener('popstate',handleRoute);
+function addToCart(id){cart.push(id);saveCart();showToast("Agregado al carrito")}
+function removeFromCart(i){cart.splice(i,1);saveCart()}
+function saveCart(){localStorage.setItem("novaCart",JSON.stringify(cart));renderCart()}
+function renderCart(){
+ document.getElementById("count").textContent=cart.length;
+ const body=document.getElementById("cartBody");
+ if(!cart.length){body.innerHTML='<div class="empty">Tu carrito está vacío.<br><br>Descubrí algo que te guste.</div>';document.getElementById("total").textContent="$0";return}
+ body.innerHTML=cart.map((id,i)=>{let p=products.find(x=>x.id===id);return `<div class="cartitem"><img src="${p.img}" alt=""><div style="flex:1"><h4>${p.name}</h4><p>${p.brand}</p><p>${money(p.price)}</p><div class="qty"><button onclick="removeFromCart(${i})">−</button><span>1</span><button onclick="addToCart(${p.id})">+</button></div></div></div>`}).join("");
+ document.getElementById("total").textContent=money(cart.reduce((s,id)=>s+products.find(p=>p.id===id).price,0));
+}
+function toggleCart(){document.getElementById("cartLayer").classList.toggle("open")}
+function checkout(){if(!cart.length)return showToast("Tu carrito está vacío");showToast("Checkout preparado para conectar al backend")}
+function showToast(t){let x=document.getElementById("toast");x.textContent=t;x.classList.add("show");clearTimeout(window.tt);window.tt=setTimeout(()=>x.classList.remove("show"),2200)}
+renderProducts();renderCart();handleRoute();
+</script>
+</body>
+</html>
